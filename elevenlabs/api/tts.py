@@ -119,7 +119,7 @@ class TTS(API):
                 websocket.send(json.dumps(data))
                 try:
                     data = json.loads(websocket.recv(1e-4))
-                    if data["audio"]:
+                    if data.get("audio"):
                         yield base64.b64decode(data["audio"])  # type: ignore
                 except TimeoutError:
                     pass
