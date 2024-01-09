@@ -131,7 +131,7 @@ class TTS(API):
             while True:
                 try:
                     data = json.loads(websocket.recv())
-                    if data["audio"]:
+                    if data.get("audio"):
                         yield base64.b64decode(data["audio"])  # type: ignore
                 except websockets.exceptions.ConnectionClosed:
                     break
