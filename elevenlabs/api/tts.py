@@ -133,5 +133,7 @@ class TTS(API):
                     data = json.loads(websocket.recv())
                     if data.get("audio"):
                         yield base64.b64decode(data["audio"])  # type: ignore
+                    else:
+                        print("Check the quota of your API Key")
                 except websockets.exceptions.ConnectionClosed:
                     break
